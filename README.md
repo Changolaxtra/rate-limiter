@@ -1,2 +1,2 @@
 # rate-limiter
-Rate Limiter for API using Tokem Bucket Algorithm
+Rate Limiter for API using Token Bucket Algorithm
