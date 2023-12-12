@@ -1,0 +1,7 @@
+rate-limiter:
+  apiKey-header-name: "X-API-Key"
+  default-policy:
+    apiKey: ""
+    isUnlimited: false
+    allowedRequests: 1
+    windowSizeInMilliSeconds: 60

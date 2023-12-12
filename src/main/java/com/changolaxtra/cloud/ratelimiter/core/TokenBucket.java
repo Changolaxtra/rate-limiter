@@ -1,6 +1,6 @@
 package com.changolaxtra.cloud.ratelimiter.core;
 
-import com.changolaxtra.cloud.ratelimiter.policy.RateLimitPolicy;
+import com.changolaxtra.cloud.ratelimiter.core.policy.RateLimitPolicy;
 
 public class TokenBucket {
 
@@ -20,7 +20,7 @@ public class TokenBucket {
         this.refill();
     }
 
-    public boolean processRequest() {
+    public boolean isAllowed() {
         return isUnlimited || processLimitedRequest();
     }
 
