@@ -12,12 +12,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class StorageManagerConfiguration {
 
-    @Bean
-    public EmbeddedStorageManager.Default embeddedStorageManager() {
-        final EmbeddedStorageManager.Default storageManager =
-                (EmbeddedStorageManager.Default) EmbeddedStorage.start(new PlanLimitDataRoot());
-        storageManager.storeRoot();
-        return storageManager;
-    }
+  @Bean
+  public EmbeddedStorageManager.Default embeddedStorageManager() {
+    final EmbeddedStorageManager.Default storageManager =
+        (EmbeddedStorageManager.Default) EmbeddedStorage.start(new PlanLimitDataRoot());
+    storageManager.storeRoot();
+    return storageManager;
+  }
 
 }

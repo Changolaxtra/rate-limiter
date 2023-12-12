@@ -8,19 +8,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RateLimiterConfiguration {
 
-    @Value("${rate-limiter.apiKey-header-name}")
-    private String apiKeyHeaderName;
+  @Value("${rate-limiter.apiKey-header-name}")
+  private String apiKeyHeaderName;
 
-    @Value("${rate-limiter.default-policy.apiKey}")
-    private String defaultApiKey;
+  @Value("${rate-limiter.default-policy.apiKey}")
+  private String defaultApiKey;
 
-    @Value("${rate-limiter.default-policy.allowedRequests}")
-    private long defaultAllowedRequests;
+  @Value("${rate-limiter.default-policy.allowedRequests}")
+  private long defaultAllowedRequests;
 
-    @Value("${rate-limiter.default-policy.windowSizeInMilliSeconds}")
-    private long defaultWindowSizeInMilliSeconds;
+  @Value("${rate-limiter.default-policy.windowSizeInMilliSeconds}")
+  private long defaultWindowSizeInMilliSeconds;
 
-    @Value("${rate-limiter.default-policy.isUnlimited}")
-    private boolean defaultIsUnlimited;
+  @Value("${rate-limiter.default-policy.isUnlimited}")
+  private boolean defaultIsUnlimited;
 
 }

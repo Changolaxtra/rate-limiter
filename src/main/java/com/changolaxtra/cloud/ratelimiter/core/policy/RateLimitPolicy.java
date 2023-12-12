@@ -10,8 +10,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class RateLimitPolicy {
-    private String apiKey;
-    private long allowedRequests;
-    private long windowSizeInMilliSeconds;
-    private boolean isUnlimited;
+
+  private String apiKey;
+  private long allowedRequests;
+  private long windowSizeInMilliSeconds;
+  private boolean isUnlimited;
 }
