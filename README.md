@@ -14,6 +14,8 @@ TBD
 By adding this annotation to main Spring Boot class the required beans will be activated.
 
 ```java
+import com.changolaxtra.cloud.ratelimiter.annotations.EnableApiRateLimiter;
+
 @EnableApiRateLimiter
 @SpringBootApplication
 public class ApiApplication {
@@ -47,41 +49,18 @@ rate-limiter:
 
 This library allows to create more **API Key Policies**, by creating the model and calling the `saveOrUpdate` method in the repository.
 
-- Example from DB Repository:
+- Example of creating and adding one policy:
 
 ````java
+import com.changolaxtra.cloud.ratelimiter.core.PlanLimitBucket;
+import com.changolaxtra.cloud.ratelimiter.core.policy.RateLimitPolicy;
+import com.changolaxtra.cloud.ratelimiter.storage.EmbeddedPlanLimitStorage;
 
-@Component
-public class ClientApiInitializer implements InitializingBean {
-
-    private final EmbeddedPlanLimitStorage embeddedPlanLimitStorage;
-    private final MyDataBaseRepository dbRepository;
-
-    public ClientApiInitializer(final EmbeddedPlanLimitStorage embeddedPlanLimitStorage,
-                                final MyDataBaseRepository dbRepository) {
-        this.embeddedPlanLimitStorage = embeddedPlanLimitStorage;
-        this.dbRepository = dbRepository;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        Optional.ofNullable(dbRepository)
-                .map(MyDataBaseRepository::getPlanLimits)
-                .orElse(new ArrayList<>())
-                .forEach(embeddedPlanLimitStorage::saveOrUpdate);
-    }
-}
-````
-
-- Example from manual way:
-
-````java
 @Component
 public class ClientApiInitializer {
 
     private final EmbeddedPlanLimitStorage embeddedPlanLimitStorage;
-
-
+    
     public ClientApiInitializer(final EmbeddedPlanLimitStorage embeddedPlanLimitStorage) {
         this.embeddedPlanLimitStorage = embeddedPlanLimitStorage;
     }
@@ -106,6 +85,7 @@ public class ClientApiInitializer {
 Use the annotation `@ApiRateLimited` in the methods that should be limited using the policies.
 
 ````java
+import com.changolaxtra.cloud.ratelimiter.annotations.ApiRateLimited;
 
 @RestController
 @RequestMapping("/card")
