@@ -2,6 +2,10 @@ package com.changolaxtra.cloud.ratelimiter.core;
 
 import com.changolaxtra.cloud.ratelimiter.core.policy.RateLimitPolicy;
 
+/**
+ * Core TokenBucket class that contains the logic to verify if there are tokens available to process
+ * the request.
+ */
 public class TokenBucket {
 
   private final long numberOfRequests;
@@ -12,6 +16,9 @@ public class TokenBucket {
   private long nextRefillTime;
   private long numberOfTokenAvailable;
 
+  /**
+   * Constructor.
+   */
   public TokenBucket(final RateLimitPolicy rateLimitPolicy) {
     this.maxBucketSize = rateLimitPolicy.getAllowedRequests();
     this.numberOfRequests = rateLimitPolicy.getAllowedRequests();
@@ -20,6 +27,9 @@ public class TokenBucket {
     this.refill();
   }
 
+  /**
+   * Verifies if the Bucket has available tokens to process the request.
+   */
   public boolean isAllowed() {
     return isUnlimited || processLimitedRequest();
   }

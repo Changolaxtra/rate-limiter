@@ -5,6 +5,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * Model to create Limit policies that holds the configuration for the PlanLimitBucket including the
+ * API Key.
+ */
 @Getter
 @Builder
 @AllArgsConstructor

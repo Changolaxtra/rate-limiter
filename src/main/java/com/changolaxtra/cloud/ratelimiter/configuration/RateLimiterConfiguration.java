@@ -4,6 +4,10 @@ import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Holder class to inject the needed properties to read the API Key header and create the default
+ * policy.
+ */
 @Getter
 @Configuration
 public class RateLimiterConfiguration {

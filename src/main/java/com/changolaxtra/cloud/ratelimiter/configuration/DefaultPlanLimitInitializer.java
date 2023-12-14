@@ -8,6 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
+/**
+ * Spring Boot initializer class to create the default {@link RateLimitPolicy}.
+ */
 @Slf4j
 @Component
 public class DefaultPlanLimitInitializer implements InitializingBean {

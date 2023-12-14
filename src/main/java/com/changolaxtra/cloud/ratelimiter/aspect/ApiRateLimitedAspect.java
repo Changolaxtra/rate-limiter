@@ -14,6 +14,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+/**
+ * Aspect component to intercept the @ApiRateLimited annotation.
+ */
 @Slf4j
 @Aspect
 @Component
@@ -22,12 +25,21 @@ public class ApiRateLimitedAspect {
   private final PlanLimitStorage planLimitStorage;
   private final RateLimiterConfiguration rateLimiterConfiguration;
 
+  /**
+   * Constructor.
+   */
   public ApiRateLimitedAspect(final PlanLimitStorage planLimitStorage,
       final RateLimiterConfiguration rateLimiterConfiguration) {
     this.planLimitStorage = planLimitStorage;
     this.rateLimiterConfiguration = rateLimiterConfiguration;
   }
 
+  /**
+   * Around pointcut to intercept the @ApiRateLimited annotation that verifies if there are tokens
+   * available to proceed with the request.
+   *
+   * @return the normal result of the method or HTTP 403 Entity if there are no tokens available.
+   */
   @Around("@annotation(com.changolaxtra.cloud.ratelimiter.annotations.ApiRateLimited)")
   public Object rateLimitCheck(final ProceedingJoinPoint joinPoint) throws Throwable {
     final String apiKey = getApiKey();

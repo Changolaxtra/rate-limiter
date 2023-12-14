@@ -8,11 +8,17 @@ import org.apache.commons.lang3.StringUtils;
 import org.eclipse.store.storage.embedded.types.EmbeddedStorageManager;
 import org.springframework.stereotype.Repository;
 
+/**
+ * Implementation of {@link PlanLimitStorage} using {@link EmbeddedStorageManager} as main storage.
+ */
 @Repository
 public class EmbeddedPlanLimitStorage implements PlanLimitStorage {
 
   private final EmbeddedStorageManager.Default embeddedStorageManager;
 
+  /**
+   * Constructor.
+   */
   public EmbeddedPlanLimitStorage(final EmbeddedStorageManager.Default embeddedStorageManager) {
     this.embeddedStorageManager = embeddedStorageManager;
   }
