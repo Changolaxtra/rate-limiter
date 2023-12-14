@@ -20,10 +20,16 @@ jobs:
           cache: maven
       - name: Build with Maven
         run: mvn -B clean package
-      - name: Release
-        uses: qcastel/github-actions-maven-release@master
-        with:
-          git-release-bot-name: "Changolaxtra"
-          git-release-bot-email: "dan.rojasx@gmail.com"
-          maven-args: "-Dmaven.javadoc.skip=true -DskipTests -DskipITs -Ddockerfile.skip -DdockerCompose.skip -Dmaven.deploy.skip=true"
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Update Patch Version
+        run: |
+          mvn --batch-mode --no-transfer-progress build-helper:parse-version versions:set \
+          -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion}-SNAPSHOT \
+          versions:commit
+
+      - name: Perform Release Build
+        run: |
+          git config user.name Changolaxtra
+          git config user.email dan.rojasx@gmail.com
+          mvn --batch-mode --no-transfer-progress release:clean release:prepare release:perform \
+          -Darguments="-Dmaven.javadoc.skip=true -Dmaven.test.skipTests=true -Dmaven.test.skip=true" \
+          -Dusername=s-airchangeservice -Dpassword=${{ secrets.SSH_PRIVATE_KEY }}
