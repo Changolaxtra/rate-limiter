@@ -16,9 +16,6 @@ public class EmbeddedPlanLimitStorage implements PlanLimitStorage {
 
   private final EmbeddedStorageManager.Default embeddedStorageManager;
 
-  /**
-   * Constructor.
-   */
   public EmbeddedPlanLimitStorage(final EmbeddedStorageManager.Default embeddedStorageManager) {
     this.embeddedStorageManager = embeddedStorageManager;
   }

@@ -12,9 +12,6 @@ public class PlanLimitDataRoot {
 
   private final Set<PlanLimitBucket> planLimitBuckets;
 
-  /**
-   * Constructor.
-   */
   public PlanLimitDataRoot() {
     planLimitBuckets = new HashSet<>();
   }

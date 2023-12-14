@@ -13,9 +13,6 @@ public class PlanLimitBucket {
   private final String apiKey;
   private final TokenBucket tokenBucket;
 
-  /**
-   * Constructor.
-   */
   public PlanLimitBucket(final RateLimitPolicy rateLimitPolicy) {
     this.apiKey = rateLimitPolicy.getApiKey();
     this.tokenBucket = new TokenBucket(rateLimitPolicy);

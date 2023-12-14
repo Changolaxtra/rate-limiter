@@ -25,9 +25,6 @@ public class ApiRateLimitedAspect {
   private final PlanLimitStorage planLimitStorage;
   private final RateLimiterConfiguration rateLimiterConfiguration;
 
-  /**
-   * Constructor.
-   */
   public ApiRateLimitedAspect(final PlanLimitStorage planLimitStorage,
       final RateLimiterConfiguration rateLimiterConfiguration) {
     this.planLimitStorage = planLimitStorage;
