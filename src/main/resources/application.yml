@@ -4,4 +4,4 @@ rate-limiter:
     apiKey: ""
     isUnlimited: false
     allowedRequests: 1
-    windowSizeInMilliSeconds: 60
+    windowSizeInMilliSeconds: 60000
