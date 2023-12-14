@@ -89,6 +89,8 @@ public class ClientApiInitializer {
 
 Use the annotation `@ApiRateLimited` in the methods that should be limited using the policies.
 
+If the limit is reached an `HTTP 429 (Too Many Requests)` will be returned.
+
 ````java
 import com.changolaxtra.cloud.ratelimiter.annotations.ApiRateLimited;
 
