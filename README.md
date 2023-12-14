@@ -32,8 +32,10 @@ public class ApiApplication {
 The library default policy can be overridden by adding the below configuration to
 the `application.yaml` or `application.properties` file.
 
-The default policy reads the `X-API-Key`, the **API Key** is `blank` and _only one request can be
+The default policy reads the `X-API-Key` header in the HTTP Request, the **API Key** is `blank` and _only one request can be
 processed by minute_.
+
+**Note**: If `isUnlimited` is set as `true`, it means that all the request for that API Key will be processed and the other parameters will be ignored.
 
 ````yaml
 rate-limiter:
@@ -50,6 +52,9 @@ rate-limiter:
 This library allows to create more **API Key Policies**, by creating the model and calling the `saveOrUpdate` method in the repository.
 
 - Example of creating and adding one policy:
+
+**Note**: If `isUnlimited` is set as `true`, it means that all the request for that API Key will be processed and the other parameters will be ignored.
+
 
 ````java
 import com.changolaxtra.cloud.ratelimiter.core.PlanLimitBucket;
