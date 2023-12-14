@@ -102,6 +102,9 @@
         <configuration>
           <scmCommentPrefix>[ci skip]</scmCommentPrefix>
           <tagNameFormat>@{project.version}</tagNameFormat>
+          <checkModificationExcludes>
+            <checkModificationExclude>pom.xml</checkModificationExclude>
+          </checkModificationExcludes>
         </configuration>
       </plugin>
     </plugins>
