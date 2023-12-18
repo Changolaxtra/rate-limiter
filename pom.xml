@@ -11,7 +11,7 @@
 
   <groupId>com.changolaxtra.cloud</groupId>
   <artifactId>rate-limiter</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <name>rate-limiter</name>
   <description>Rate Limiter library for Spring Web</description>
 
@@ -23,6 +23,14 @@
     <checkstyle.version>10.12.6</checkstyle.version>
     <maven-release-plugin.version>3.0.1</maven-release-plugin.version>
   </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/Changolaxtra/rate-limiter</url>
+    </repository>
+  </distributionManagement>
 
   <scm>
     <connection>scm:git:${project.scm.url}</connection>
