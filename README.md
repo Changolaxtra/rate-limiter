@@ -5,9 +5,20 @@ not.
 
 ## How to use.
 
-### Add the dependency.
+### Clone, Compile And Add the dependency.
 
-TBD
+Clone this project and compile it with `mvn clean install`.
+
+Add the dependency:
+````xml
+<dependency>
+  <groupId>com.changolaxtra.cloud</groupId>
+  <artifactId>rate-limiter</artifactId>
+  <version>1.0.2</version>
+</dependency>
+````
+
+**Note**: Public repository with artifact is pending.
 
 ### Add the `@EnableApiRateLimiter`.
 
